@@ -1,0 +1,40 @@
+{
+    "config": {
+        "main-stack-size": {
+            "value": 8192
+        }, "wifi-shield": {
+            "help": "Options are internal, WIFI_ESP8266, WIFI_IDW0XX1, WIFI_ISM43362",
+            "value": "WIFI_ISM43362"
+        },
+        "wifi-ssid": {
+            "help": "WiFi SSID",
+            "value": "\"esys305-Dlink\""
+        },
+        "wifi-password": {
+            "help": "WiFi Password",
+            "value": "\"305305abcd\""
+        }
+    },
+    "macros": [
+        "MBEDTLS_MPI_MAX_SIZE=1024",
+        "MBEDTLS_MPI_WINDOW_SIZE=1",
+        "MBEDTLS_USER_CONFIG_FILE=\"mbedtls_entropy_config.h\"",
+        "MBEDTLS_TEST_NULL_ENTROPY",
+        "MBEDTLS_NO_DEFAULT_ENTROPY_SOURCES",
+        "MBED_HEAP_STATS_ENABLED=1",
+        "MBED_STACK_STATS_ENABLED=1",
+        "MBED_MEM_TRACING_ENABLED=1"
+    ],
+    "target_overrides": {
+        "*": {
+            "platform.stdio-baud-rate": 115200,
+            "platform.stdio-convert-newlines": true,
+            "mbed-trace.enable": null,
+            "nsapi.default-wifi-security": "WPA_WPA2",
+            "nsapi.default-wifi-ssid": "\"esys305-Dlink\"",
+            "nsapi.default-wifi-password": "\"305305abcd\"",
+            "target.features_add": ["BLE"],
+            "target.extra_labels_add": ["CORDIO", "CORDIO_BLUENRG"]
+        }
+    }
+}
